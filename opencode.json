@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "lsp": true,
+
+  "default_agent": "OpenCoder",
+  "subagent_depth": 2,
+
+  "mcp": {
+    "context7": {
+      "type": "remote",
+       "url": "https://mcp.context7.com/mcp",
+       "headers": {
+       "CONTEXT7_API_KEY": "{env:C7_TOKEN}"
+       },
+       "enabled": true
+   },
+    "github": {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:GITHUB_TOKEN}",
+        "GITHUB_TOOLSETS": "repos,issues,pull_requests"
+      }
+    }
+
+  }
+}
